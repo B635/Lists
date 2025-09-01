@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.10)
+project(Lists LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+include(${CMAKE_SOURCE_DIR}/conan_toolchain.cmake)
+
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}")
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}")
+
+
+find_package(Pistache REQUIRED)
+find_package(libpqxx REQUIRED)
+find_package(hiredis REQUIRED)
+find_package(redis++ REQUIRED)
+find_package(Threads REQUIRED)
+
+#add_subdirectory(backend)
+
