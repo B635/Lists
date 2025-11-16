@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(Lists LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # find_package(pistache REQUIRED)
@@ -18,6 +18,7 @@ add_subdirectory(proto)
 
 set(SOURCES
     src/main.cpp
+    src/api/api_server.cpp
 )
 
 add_executable(posterdb ${SOURCES})
