@@ -20,6 +20,8 @@ void APIServer::setupRoutes() {
 
   Routes::Get(*router, "/api/books",
               Routes::bind(&APIServer::handleGetBooks, this));
+  
+    endpoint->setHandler(router->handler());
 }
 
 void APIServer::start() {
