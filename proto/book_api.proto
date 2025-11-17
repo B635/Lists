@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package lists.book.api;
+
+import "google/protobuf/timestamp.proto";
+import "book.proto";
+
+option cc_enable_arenas = true;
+
+message ListBooksRequest {
+    int32 page = 1;
+    int32 page_size = 2;
+}
+
+message ListBooksResponse {
+  repeated lists.book.BookCard books = 1;
+}
+
+message GetBookRequest {
+  int64 id = 1;
+}
+
+message GetBookResponse {
+  lists.book.Book book = 1;
+}
+
+message CreateBookRequest {
+    string title = 1;
+    string cover_image_url = 2;
+    string author          = 3;
+
+    google.protobuf.Timestamp started_at  = 4;
+    google.protobuf.Timestamp finished_at = 5;
+
+    lists.book.Rating rating = 6;
+    string note              = 7;
+}
+
+message CreateBookResponse {
+  lists.book.Book book = 1;
+}
+
+message UpdateBookRequest {
+  int64 id = 1;
+
+  optional string title           = 2;
+  optional string cover_image_url = 3;
+  optional string author          = 4;
+
+  optional google.protobuf.Timestamp started_at  = 5;
+  optional google.protobuf.Timestamp finished_at = 6;
+
+  optional lists.book.Rating rating = 7;
+  optional string note              = 8;
+}
+
+message UpdateBookResponse {
+  lists.book.Book book = 1;
+}

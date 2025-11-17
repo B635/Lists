@@ -1,7 +1,8 @@
 find_program(PROTOBUF_COMPILER protoc)
 
 set(PROTO_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/bookRecord.proto
+    ${CMAKE_CURRENT_SOURCE_DIR}/book.proto
+    ${CMAKE_CURRENT_SOURCE_DIR}/book_api.proto
 )
 
 protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${PROTO_SOURCES})
