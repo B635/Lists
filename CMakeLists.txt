@@ -21,6 +21,7 @@ add_subdirectory(proto)
 set(SOURCES
     src/main.cpp
     src/api/api_server.cpp
+    src/model/book.cpp
 )
 
 add_executable(posterdb ${SOURCES})
