@@ -4,6 +4,7 @@
 #include <optional>
 #include <chrono>
 #include "book.pb.h"
+#include "book_api.pb.h"
 
 struct Book {
     int64_t id;
@@ -18,3 +19,6 @@ struct Book {
 
 Book fromProto(const lists::book::Book& pb);
 lists::book::Book toProto(const Book& b);
+
+Book makeBookFromCreateRequest(const lists::book::api::CreateBookRequest& req, 
+                                int64_t new_id);

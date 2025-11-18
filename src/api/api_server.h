@@ -7,23 +7,41 @@
 
 #include <iostream>
 #include <memory>
+#include <vector>
+
+#include "model/book.h"
+#include "book_api.pb.h"
 
 class APIServer {
- private:
-  std::shared_ptr<Pistache::Http::Endpoint> endpoint;
-  std::shared_ptr<Pistache::Rest::Router> router;
-  int port;
+private:
+    std::shared_ptr<Pistache::Http::Endpoint> endpoint;
+    std::shared_ptr<Pistache::Rest::Router> router;
+    int port;
 
- public:
-  APIServer(int port = 8080);
-  ~APIServer();
+    std::vector<Book> books_;
+    int64_t next_id = 1;
 
-  void setupRoutes();
-  void start();
-  void shutdown();
 
-  void handleGetBooks(const Pistache::Rest::Request& request,
-                      Pistache::Http::ResponseWriter response);
+public: 
+    APIServer(int port = 8080);
+    ~APIServer();
+
+    void setupRoutes();
+    void start();
+    void shutdown();
+
+    void handleGetBooks(const Pistache::Rest::Request& request,
+        Pistache::Http::ResponseWriter response);
+    
+    void handleGetBook(const Pistache::Rest::Request& request,
+                       Pistache::Http::ResponseWriter response);
+
+    void handleCreateBook(const Pistache::Rest::Request& request,
+                          Pistache::Http::ResponseWriter response);
+
+    void handleUpdateBook(const Pistache::Rest::Request& request,
+                          Pistache::Http::ResponseWriter response);
+
 };
 
 #endif

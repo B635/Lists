@@ -74,7 +74,7 @@ lists::book::Book toProto(const Book& b) {
         *pb.mutable_startdate() = timePointToTimestamp(*b.start_date);
     }
 
-    if (b.start_date) {
+    if (b.end_date) {
         *pb.mutable_enddate() = timePointToTimestamp(*b.end_date);
     }
 
@@ -85,4 +85,35 @@ lists::book::Book toProto(const Book& b) {
     }
 
     return pb;
+}
+
+Book makeBookFromCreateRequest(const lists::book::api::CreateBookRequest& req,
+                                      int64_t new_id) {
+    Book b;
+    b.id    = new_id;
+    b.title = req.title();  
+
+    if (!req.author().empty()) {
+        b.author = req.author();
+    }
+    if (!req.cover_image_url().empty()) {
+        b.cover_image_url = req.cover_image_url();
+    }
+    if (!req.note().empty()) {
+        b.note = req.note();
+    }
+
+    if (req.has_start_date()) {
+        b.start_date = timestampToTimePoint(req.start_date());
+    }
+    if (req.has_end_date()) {
+        b.end_date = timestampToTimePoint(req.end_date());
+    }
+
+    // rating：枚举 0 代表未设置
+    if (req.rating() != lists::book::RATING_UNSPECIFIED) {
+        b.rating = static_cast<int>(req.rating());
+    }
+
+    return b;
 }
