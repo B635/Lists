@@ -29,8 +29,8 @@ message CreateBookRequest {
     string cover_image_url = 2;
     string author          = 3;
 
-    google.protobuf.Timestamp started_at  = 4;
-    google.protobuf.Timestamp finished_at = 5;
+    google.protobuf.Timestamp start_date  = 4;
+    google.protobuf.Timestamp end_date = 5;
 
     lists.book.Rating rating = 6;
     string note              = 7;
@@ -47,8 +47,8 @@ message UpdateBookRequest {
   optional string cover_image_url = 3;
   optional string author          = 4;
 
-  optional google.protobuf.Timestamp started_at  = 5;
-  optional google.protobuf.Timestamp finished_at = 6;
+  optional google.protobuf.Timestamp start_date  = 5;
+  optional google.protobuf.Timestamp end_date = 6;
 
   optional lists.book.Rating rating = 7;
   optional string note              = 8;
