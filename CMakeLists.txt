@@ -29,7 +29,8 @@ add_executable(posterdb ${SOURCES})
 
 target_link_libraries(posterdb
     ${PISTACHE_LIBRARIES}
-    ${POSTGRESQL_LIBRARIES}
+    # ${POSTGRESQL_LIBRARIES}
+    pqxx
     hiredis
     nlohmann_json::nlohmann_json
     protobuf::libprotobuf
